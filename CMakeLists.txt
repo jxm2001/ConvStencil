@@ -21,7 +21,7 @@ set_target_properties(
     PROPERTIES
     CUDA_SEPARABLE_COMPILATION ON
     CUDA_ARCHITECTURES "80;90")
-target_compile_options(convstencil_1d PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-O3 -lineinfo --use_fast_math --gpu-architecture=sm_80>)
+target_compile_options(convstencil_1d PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-O3 -lineinfo --use_fast_math>)
 
 
 # add_executable(cudnn_1d3p src/cudnn/conv_1d3p.cu)
@@ -81,7 +81,7 @@ set_target_properties(
     PROPERTIES
     CUDA_SEPARABLE_COMPILATION ON
     CUDA_ARCHITECTURES "80;90")
-target_compile_options(convstencil_2d PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-O3 -lineinfo --use_fast_math --gpu-architecture=sm_80>)
+target_compile_options(convstencil_2d PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-O3 -lineinfo --use_fast_math>)
 
 add_executable(convstencil_3d src/3d/main.cu src/3d/gpu_box.cu src/3d/gpu_star.cu  src/3d/3d_utils.h)
 # target_link_libraries( gpu_box2d1r ${CUDA_cusparse_LIBRARY} ${CUDA_cublas_LIBRARY} )
@@ -90,7 +90,7 @@ set_target_properties(
     PROPERTIES
     CUDA_SEPARABLE_COMPILATION ON
     CUDA_ARCHITECTURES "80;90")
-target_compile_options(convstencil_3d PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-O3 -lineinfo --use_fast_math --gpu-architecture=sm_80>)
+target_compile_options(convstencil_3d PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-O3 -lineinfo --use_fast_math>)
 
-set(CMAKE_CUDA_ARCHITECTURES 80)  
+set(CMAKE_CUDA_ARCHITECTURES 80 90)
 # add_subdirectory(breakdown)
