@@ -341,7 +341,7 @@ void gpu_star_3d1r(const double * __restrict__ in, double * __restrict__ out, co
     cudaEventSynchronize(stop);
     float elapsed_time = 0;
     cudaEventElapsedTime(&elapsed_time, start, stop);
-    std::cout << "Time = " << static_cast<int>(elapsed_time) << "[ms]" << std::endl;
+    std::cout << "Time = " << elapsed_time << "[ms]" << std::endl;
     double secs = elapsed_time / 1000.0;
     std::cout << secs << std::endl;
     printf("GStencil/s = %f\n", ((double)input_m * input_n * input_h * times * 3) / secs / 1e9);
