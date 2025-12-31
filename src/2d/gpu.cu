@@ -28,7 +28,7 @@ __constant__ double param_matrix_d[2 * 52 * TENSOR_CORE_M];
 
 
 __global__ void kernel2d (const double * __restrict__ in, double * __restrict__ out, const int ldm, const int * __restrict__ lookup_table1, const int * __restrict__ lookup_table2) {
-    __shared__ double sharedmem[2][SM_SIZE_ROW * SM_SIZE_COL];
+    __shared__ double sharedmem[2][SM_SIZE_ROW * SM_SIZE_COL + 1];
     int begin = IDX(blockIdx.x * BLOCK_SIZE_ROW, blockIdx.y * BLOCK_SIZE_COL + 1, ldm);
     int tid = threadIdx.x;
     int totalThreads = blockDim.x;
