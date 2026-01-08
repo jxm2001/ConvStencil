@@ -337,7 +337,6 @@ void gpu_box_2d1r(const double * __restrict__ in, double * __restrict__ out, con
     for(; i < times; i++) {
         CUDAKERNELCHECK((kernel2d<<<grid_config, block_config>>>(array_d[i % 2], array_d[(i + 1) % 2], cols, lookup_table1_d, lookup_table2_d)));
     }
-    CUDA_CHECK(cudaDeviceSynchronize());
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
     float elapsed_time = 0;
@@ -449,7 +448,6 @@ void gpu_box_2d3r(const double * __restrict__ in, double * __restrict__ out, con
     for(; i < times; i++) {
         CUDAKERNELCHECK((kernel2d<<<grid_config, block_config>>>(array_d[i % 2], array_d[(i + 1) % 2], cols, lookup_table1_d, lookup_table2_d)));
     }
-    CUDA_CHECK(cudaDeviceSynchronize());
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
     float elapsed_time = 0;

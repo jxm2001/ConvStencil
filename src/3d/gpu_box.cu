@@ -539,7 +539,6 @@ void gpu_box_3d1r(const double * __restrict__ in, double * __restrict__ out, con
     for(; i < times; i++) {
         CUDAKERNELCHECK((gpu_box_3d1r_kernel<<<grid_config, block_config, sm_size>>>(array_d[i % 2], array_d[(i + 1) % 2], input_h, rows, cols, lookup_table1_d, lookup_table2_d)));
     }
-    CUDA_CHECK(cudaDeviceSynchronize());
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
     float elapsed_time = 0;
